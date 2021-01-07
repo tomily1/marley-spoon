@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 class Recipe
   attr_reader :id, :title, :calories, :description, :chef, :photo, :tags
-
-  @@cache ||= {}
 
   def initialize(id, fields)
     create(id, fields)
@@ -12,7 +12,7 @@ class Recipe
   end
 
   def self.items(page)
-    @@cache[page] ||= entries(content_type: 'recipe').items
+    cache[page] ||= entries(content_type: 'recipe').items
   end
 
   def self.entries(content_type:)
@@ -20,8 +20,12 @@ class Recipe
   end
 
   def self.find_by_id(id)
-    all if @@cache.empty?
-    @@cache[id]
+    all if cache.empty?
+    cache[id]
+  end
+
+  def self.cache
+    @cache ||= {}
   end
 
   private
@@ -33,8 +37,8 @@ class Recipe
     @description = fields[:description]
 
     associate_records_for(fields)
-    
-    @@cache[id] = self
+
+    Recipe.cache[id] = self
 
     self
   end
@@ -44,7 +48,7 @@ class Recipe
     @photo = Photo.new(fields[:photo]) if fields[:photo]
 
     @tags = if fields[:tags].present?
-              fields[:tags].map{ |tag| Tag.new(tag) } 
+              fields[:tags].map { |tag| Tag.new(tag) }
             else
               []
             end

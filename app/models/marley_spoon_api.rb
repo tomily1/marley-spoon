@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MarleySpoonApi
   def self.client
     @client ||= contentful_client
@@ -19,7 +21,7 @@ class MarleySpoonApi
     Contentful::Client.new(
       space: ENV['SPACE_ID'],
       environment: ENV['ENVIRONMENT'],
-      access_token: ENV['ACCESS_TOKEN'],
-    )  
+      access_token: ENV['ACCESS_TOKEN']
+    )
   end
 end

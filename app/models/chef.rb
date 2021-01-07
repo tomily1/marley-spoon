@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Chef
   attr_reader :id, :name, :raw
 
