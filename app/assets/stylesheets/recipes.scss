@@ -1,4 +1,6 @@
 .card{
+  color: #212529;
+
   &-title {
     font-size: 20px;
   }
@@ -6,9 +8,20 @@
   &-subtitle {
     font-size: 14px;
   }
+
+  &-body:hover {
+    color: #47d7ac;
+  }
 }
 
 .recipe {
+  &-link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
   &-labels {
     color: #716d6a;
     font-family: "Avenir Next Cyr W00 Medium",Arial,sans-serif;
