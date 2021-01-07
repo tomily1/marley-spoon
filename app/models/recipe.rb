@@ -8,7 +8,10 @@ class Recipe
   end
 
   def self.all(page: '0')
-    items(page).map { |item| new(item.id, item.fields) }
+    recipes = items(page)
+    return [] if recipes.empty?
+
+    recipes.map { |item| new(item.id, item.fields) }
   end
 
   def self.items(page)
