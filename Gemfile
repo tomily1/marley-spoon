@@ -6,6 +6,7 @@ ruby '2.6.0'
 gem 'bootstrap', '~> 4.0.0'
 gem 'contentful'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'kramdown'
 gem 'slim'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
