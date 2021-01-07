@@ -74,7 +74,7 @@ RSpec.describe Recipe do
     it 'fetches all recipe items from contentful' do
       expect(Recipe.items('0').count).to eq 2
     end
-    
+
     it 'memoizes the response after the first call' do
       expect(Recipe.cache['0']).not_to eq({})
     end

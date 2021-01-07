@@ -1,0 +1,16 @@
+language: ruby
+bundler_args: '--without development exclude_travis'
+cache: bundler
+dist: trusty
+rvm:
+  - 2.6.0
+matrix:
+  fast_finish: true
+addons:
+  chrome: 'stable'
+before_script:
+  - cp -v .env.example .env
+script:
+  - bundle exec rubocop -c .rubocop.yml --fail-level C
+  - bundle exec rspec
+sudo: false
