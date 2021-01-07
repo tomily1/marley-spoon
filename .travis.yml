@@ -8,9 +8,13 @@ matrix:
   fast_finish: true
 addons:
   chrome: 'stable'
-before_script:
+before_install:
+  - nvm install node
+install:
+  - bundle install
   - cp -v .env.example .env
 script:
+  - bundle exec brakeman -z
   - bundle exec rubocop -c .rubocop.yml --fail-level C
   - bundle exec rspec
 sudo: false

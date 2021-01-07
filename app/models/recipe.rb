@@ -7,6 +7,10 @@ class Recipe
     create(id, fields)
   end
 
+  def formatted_description
+    Kramdown::Document.new(description).to_html.html_safe
+  end
+
   def self.all(page: '0')
     recipes = items(page)
     return [] if recipes.empty?

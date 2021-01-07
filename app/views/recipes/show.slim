@@ -13,6 +13,6 @@
         .description.mb-3
           .topic.mb-3
             b What's cooking
-          .details= Kramdown::Document.new(@recipe.description).to_html.html_safe
+          .details = @recipe.formatted_description
         - if @recipe.chef
           .chef Shared with you by: <b>#{@recipe.chef.name}<b>
