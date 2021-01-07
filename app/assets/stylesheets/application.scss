@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+.background {
+  &-light-grey {
+    background: #fbfbfb;
+  }
+
+  &-red {
+    background: #fff;
+  }
+
+  &-transparent {
+    background: transparent;
+    border-color: #fff;
+  }
+}
+
+.navbar{
+  &-logo {
+    width: 98px;
+    height: 44px;
+    background-image: asset_url('logo-martha-marley-spoon.svg')
+  }
+
+  &-link{
+    color: #716d6a;
+    .active {
+      color: #2d2926;
+      border-bottom: 4px solid #ffcd00;
+    }
+  }
+}

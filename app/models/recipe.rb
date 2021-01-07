@@ -1,25 +1,16 @@
 class Recipe
   attr_reader :id, :title, :calories, :description, :chef, :photo, :tags
 
-  @@all = []
-
   def initialize(id, fields)
-    @id = id
-    @title =  fields[:title]
-    @calories = fields[:calories]
-    @description = fields[:description]
-
-    associate_records_for(fields)
-
-    @@all << self
+    create(id, fields)
+    self
   end
 
-  def self.all
-    @@all = []
-    items.map { |item| new(item.id, item.fields) }
+  def self.all(page: '0')
+    items(page).map { |item| new(item.id, item.fields) }
   end
 
-  def self.items
+  def self.items(page)
     entries(content_type: 'recipe').items
   end
 
@@ -28,6 +19,15 @@ class Recipe
   end
 
   private
+
+  def create(id, fields)
+    @id = id
+    @title =  fields[:title]
+    @calories = fields[:calories]
+    @description = fields[:description]
+
+    associate_records_for(fields)
+  end
 
   def associate_records_for(fields)
     @chef = Chef.new(fields[:chef]) if fields[:chef]

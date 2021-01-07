@@ -1,0 +1,14 @@
+.container
+  .row
+    .container
+      .row
+        - @recipes.each do |recipe|
+          .col-6
+            .card.mb-2
+              img.card-img-top alt=(recipe.id) src=recipe.photo.url
+              .card-body
+                - title = recipe.title.split('with')[0].strip
+                - subtitle = recipe.title.split('with')[1].strip
+                h5.card-title = title
+                .card-subtitle with #{subtitle}
+                / [0].strip

@@ -1,0 +1,20 @@
+.card{
+  &-title {
+    font-size: 20px;
+  }
+
+  &-subtitle {
+    font-size: 14px;
+  }
+}
+
+.recipe {
+  &-labels {
+    color: #716d6a;
+    font-family: "Avenir Next Cyr W00 Medium",Arial,sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    list-style: none;
+    margin: 0 0 10px;
+  }
+}
