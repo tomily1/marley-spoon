@@ -71,10 +71,12 @@ RSpec.describe Recipe do
   end
 
   describe '#items' do
-    let(:items) { Recipe.items('0') }
-
     it 'fetches all recipe items from contentful' do
-      expect(items).to eq contentful_response.items
+      expect(Recipe.items('0').count).to eq 2
+    end
+    
+    it 'memoizes the response after the first call' do
+      expect(Recipe.cache['0']).not_to eq({})
     end
   end
 

@@ -7,6 +7,7 @@
             img.card-img-top alt=(recipe.id) src=recipe.photo.url
             .card-body
               - title = recipe.title.split('with')[0].strip
-              - subtitle = recipe.title.split('with')[1].strip
+              - subtitle = recipe.title.split('with')[1]&.strip
               h5.card-title = title
-              .card-subtitle with #{subtitle}
+              - if subtitle
+                .card-subtitle with #{subtitle}
