@@ -31,3 +31,10 @@ Rails application that consumes recipes data from Contentful API and displays it
 ### Live Demonstration
 
 This app is available and hosted on Heroku and it is available here https://marley-spoons.herokuapp.com.
+
+### Future Improvements
+This project covers the basic implementation and is written well enough to easily allow improvement and upgrades and also well tested with a good coverage. However, there are some improvements to be made. These changes include but not limited to:
+
+1. Allowing pagination in the frontend to allow fetching of recipes that are more than a page limit (for now, there are 28 records and maximum allowed is 100)
+
+2. Currently we memoize api data from contentful which is enough for now, a more robust way is to use a caching system (e.g. redis) and serialize data from cache on fetch. This will reduce the cost of making api calls, also tackle rate limiting issues incase the traffic increases in the future.
