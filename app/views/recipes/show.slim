@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-2
+    .col-8
+      .recipe-hero
+        img.recipe-hero-image alt=(@recipe.id) src=@recipe.photo.url
+        h4.mt-3.mb-4 = @recipe.title
+        - if @recipe.tags.present?
+          .recipe-tags.mb-4
+            ul.recipe-tags
+              - @recipe.tags.each do |tag|
+                li.recipe-tags-attributes.mr-2 = tag.name
+        .description.mb-3
+          .topic.mb-3
+            b What's cooking
+          .details= Kramdown::Document.new(@recipe.description).to_html.html_safe
+        - if @recipe.chef
+          .chef Shared with you by: <b>#{@recipe.chef.name}<b>

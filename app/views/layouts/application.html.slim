@@ -9,4 +9,5 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body.background-light-grey
     = render "layouts/navbar"
-    = yield
+    .container
+      = yield
