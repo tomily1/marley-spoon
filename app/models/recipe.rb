@@ -1,9 +1,10 @@
 class Recipe
   attr_reader :id, :title, :calories, :description, :chef, :photo, :tags
 
+  @@cache ||= {}
+
   def initialize(id, fields)
     create(id, fields)
-    self
   end
 
   def self.all(page: '0')
@@ -11,11 +12,16 @@ class Recipe
   end
 
   def self.items(page)
-    entries(content_type: 'recipe').items
+    @@cache[page] ||= entries(content_type: 'recipe').items
   end
 
   def self.entries(content_type:)
     MarleySpoonApi.client.entries(content_type: content_type)
+  end
+
+  def self.find_by_id(id)
+    all if @@cache.empty?
+    @@cache[id]
   end
 
   private
@@ -27,6 +33,10 @@ class Recipe
     @description = fields[:description]
 
     associate_records_for(fields)
+    
+    @@cache[id] = self
+
+    self
   end
 
   def associate_records_for(fields)
