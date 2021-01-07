@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+gem 'bootstrap', '~> 4.0.0'
 gem 'contentful'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'slim'
